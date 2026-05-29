@@ -1,0 +1,14 @@
+slug: epistemic-lensing
+web_slug: epistemic-lensing
+title: "Epistemic Lensing: A Markov-Blanket Account of Mediated Belief Distortion"
+header: "Epistemic Lensing"
+created: "2026-04"        # inception month (drives YYYY/MM archive path)
+date: "April 2026"            # publication month (shown on web)
+paper_dir: paper
+has_simulation: true
+claims_target: none      # results.json | claim-ledger | none
+repo: git@github.com:piatra-institute/papers-epistemic-lensing.git
+github: https://github.com/piatra-institute/papers-epistemic-lensing
+status: published              # draft | built | published
+abstract: |-
+  This paper proposes epistemic lensing as a formal concept for describing how mediated information channels deform belief formation. Using a Markov-blanket framing, we distinguish direct environmental evidence from processed informational inputs and define distortion as divergence between the posterior supported by a higher-fidelity channel and the posterior induced by a mediated one. We introduce five distortion operators (attenuation, selection, warping, amplification, recursion) and four families of metrics: information loss, posterior divergence, inferential curvature, and hysteresis. A toy simulation shows how channel structure produces systematic overreaction, underreaction, salience warping, and persistent miscalibration in both individual agents and populations. We extend the framework to populations and introduce posterior shear, focal capture, shadow zones, and narrative gravity wells as collective-level phenomena. The framework reads as a bridge between active inference, information theory, media ecology, and political cognition.
