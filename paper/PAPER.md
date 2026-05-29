@@ -24,8 +24,6 @@ This paper proposes a framework for making the second claim precise. The central
 
 The framework rests on three components. The first is a *three-layer architecture* (world, channel, posterior) formalized through Markov blankets. The second is a *taxonomy of distortion operators* that describe the elementary ways a channel can reshape inference. The third is a *family of metrics* that make distortion measurable. We demonstrate the framework with a toy Bayesian simulation and extend it to populations, where channel structure induces collective phenomena (polarization, epistemic fragmentation, persistent miscalibration) that no account of individual cognitive failure alone can explain.
 
-The paper is organized as follows. Section 2 introduces the theoretical framework and notation. Section 3 defines the five distortion operators. Section 4 introduces the four metric families. Section 5 presents the toy model. Section 6 extends to populations. Section 7 outlines an empirical research program. Section 8 discusses limits. Section 9 concludes.
-
 
 ## 2. Theoretical Framework
 
@@ -46,7 +44,7 @@ The agent forms a posterior belief $q(W_t \mid \cdot)$ based on whichever stream
 
 ### 2.2 Markov-Blanket Framing
 
-The architecture maps naturally onto the Markov-blanket formalism (Pearl, 1988; Friston, 2013). In the language of active inference, an agent is separated from its environment by a Markov blanket: sensory states and active states that mediate all interaction between internal states and external states. The agent's internal model of the world is updated only through blanket-facing inputs.
+The architecture has a precise correspondence in the Markov-blanket formalism (Pearl, 1988; Friston, 2013). In the language of active inference, an agent is separated from its environment by a Markov blanket: sensory states and active states that mediate all interaction between internal states and external states. The agent's internal model of the world is updated only through blanket-facing inputs.
 
 A mediating channel $\mathcal{C}$ interposes between the environment and the blanket. It transforms the evidence stream before it reaches the agent's sensory surface:
 
@@ -61,8 +59,6 @@ Epistemic lensing occurs when the mapping $W_t \to M_t \to q_i$ systematically d
 $$D\big(q_i(W_t \mid M_t),\; q^*(W_t \mid X_t)\big) > \epsilon$$
 where $D$ is a divergence measure on probability distributions and $\epsilon > 0$ is a calibration tolerance.
 \end{definition}
-
-Three clarifications follow.
 
 The benchmark $q^*$ is not omniscience. It is the posterior that a well-calibrated agent would form given a *higher-fidelity* channel, not given direct access to $W_t$. The framework measures *relative* fidelity, not metaphysical access to the thing-in-itself.
 
@@ -247,7 +243,7 @@ We run the model under four channel configurations, each isolating a different d
 
 ### 5.4 Key Finding
 
-The toy model demonstrates the distinction the verbal framework asserts but cannot prove alone: *ignorance and distortion are qualitatively different*. Attenuation produces high information loss together with low posterior divergence and zero hysteresis. The agent is uncertain and correctable. Warping and recursion produce lower information loss and higher posterior divergence and high hysteresis. The agent is confident, wrong, and resistant to correction. Two failure modes: a society that lacks information, and a society whose route from reality to belief has been curved.
+The toy model demonstrates the distinction the verbal framework asserts but cannot prove alone: ignorance and distortion are qualitatively different. Attenuation produces high information loss together with low posterior divergence and zero hysteresis. The agent is uncertain and correctable. Warping and recursion produce lower information loss and higher posterior divergence and high hysteresis. The agent is confident, wrong, and resistant to correction. Two failure modes: a society that lacks information, and a society whose route from reality to belief has been curved.
 
 
 ## 6. Population Extension
@@ -330,15 +326,13 @@ The framework treats some mediation as corrective. Journalism, expertise, and sy
 
 ## 8. Limits
 
-The framework has boundaries that have to be stated clearly so the paper does not overreach.
-
 **The benchmark is approximate.** We define distortion relative to a higher-fidelity channel, not relative to unmediated reality. In practice, determining which channel is "higher-fidelity" requires judgment and itself involves epistemic assumptions. The framework operates inside the hermeneutic circle, using relative fidelity as a tractable proxy.
 
 **Direct reality is often inaccessible.** For many questions of public concern (the state of the economy, the trajectory of a pandemic, the effects of a policy), no agent has direct access to $W_t$. All channels are mediated to some degree. The framework is comparative: it asks which mediation structures produce better-calibrated posteriors, rather than whether any structure achieves perfect calibration.
 
 **Humans necessarily rely on mediation.** A framework that implied citizens should bypass all channels and encounter the world directly would be both impractical and incoherent. Most knowledge is necessarily second-hand. The question is how to recognize when a channel's structure is deforming inference rather than supporting it.
 
-**The framework does not specify normative content.** Epistemic lensing describes *how* beliefs are deformed and stays silent on *which beliefs are correct*. It is a structural analysis. It can be applied symmetrically: any channel, regardless of its ideological orientation, can be assessed for information loss, posterior divergence, inferential curvature, and hysteresis.
+**The framework does not specify normative content.** Epistemic lensing describes *how* beliefs are deformed and stays silent on *which beliefs are correct*. It is a structural analysis. It can be applied symmetrically: any channel, regardless of its ideological orientation, can be assessed for information loss, posterior divergence, inferential curvature, and hysteresis. Whether channels are in fact symmetrically distortive is then an empirical question the metrics can settle rather than assume; work on asymmetric misinformation ecosystems (Benkler, Faris & Roberts, 2018) argues they are not, and the framework offers a way to quantify the asymmetry instead of stipulating it.
 
 **The toy model is illustrative.** The Bayesian agent in Section 5 is a normative benchmark, not a model of actual human cognition. Real agents exhibit motivated reasoning, identity-protective cognition, and bounded rationality that interact with channel structure in complex ways. The model demonstrates the *logic* of distortion; empirical validation requires the program outlined in Section 7.
 
@@ -355,6 +349,8 @@ Modern publics live inside information optics. Some channels clarify, compress, 
 
 
 ## References
+
+Benkler, Y., Faris, R., & Roberts, H. (2018). *Network Propaganda: Manipulation, Disinformation, and Radicalization in American Politics*. Oxford University Press.
 
 Bernstein, J., Wang, Y.-X., & Braverman, M. (2018). signSGD: Compressed optimisation for non-convex problems. *Proceedings of the 35th International Conference on Machine Learning*.
 
