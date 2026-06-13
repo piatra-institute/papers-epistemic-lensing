@@ -29,7 +29,7 @@ The framework rests on three components. The first is a *three-layer architectur
 
 ### 2.1 The Three-Layer Architecture
 
-Agents do not encounter the world directly. They encounter it through channels. Mediation is the basic architecture of bounded cognition, not a pathological condition. An organism's sensory apparatus is itself a channel: one that compresses, selects, and transforms environmental signals into a format the organism can process. The question is never whether mediation occurs, but what *kind* of mediation, and with what consequences for inference.
+Agents do not encounter the world directly. They encounter it through channels. Mediation is the basic architecture of bounded cognition rather than a pathological condition. An organism's sensory apparatus is itself a channel: one that compresses, selects, and transforms environmental signals into a format the organism can process. The question is never whether mediation occurs, but what *kind* of mediation, and with what consequences for inference.
 
 We formalize this with a three-layer picture:
 
@@ -60,7 +60,7 @@ $$D\big(q_i(W_t \mid M_t),\; q^*(W_t \mid X_t)\big) > \epsilon$$
 where $D$ is a divergence measure on probability distributions and $\epsilon > 0$ is a calibration tolerance.
 \end{definition}
 
-The benchmark $q^*$ is not omniscience. It is the posterior that a well-calibrated agent would form given a *higher-fidelity* channel, not given direct access to $W_t$. The framework measures *relative* fidelity, not metaphysical access to the thing-in-itself.
+The benchmark $q^*$ is the posterior that a well-calibrated agent would form given a *higher-fidelity* channel, with no claim to omniscience or to direct access to $W_t$. The framework measures *relative* fidelity, leaving aside metaphysical access to the thing-in-itself.
 
 Mediation is not always distortion. A channel that compresses redundant signals, filters noise, or synthesizes scattered evidence may *improve* calibration relative to raw exposure. The concept of epistemic lensing targets the *deformative* component: the residual divergence after accounting for any corrective value the channel provides.
 
@@ -125,7 +125,7 @@ The channel at time $t+1$ depends on new evidence and on its own prior output. T
 
 ### 3.6 Composition
 
-Real mediating systems compose these operators. A social media feed might simultaneously *select* (algorithmic curation), *amplify* (engagement-weighted ranking), *warp* (framing by content creators), and *recurse* (personalization based on prior behavior). The distortion of the composite channel is the *interaction* of individual distortions, not their sum, and the interaction can be nonlinear. A mildly selective channel with strong recursion may produce more distortion than a heavily warped channel without feedback.
+Real mediating systems compose these operators. A social media feed might simultaneously *select* (algorithmic curation), *amplify* (engagement-weighted ranking), *warp* (framing by content creators), and *recurse* (personalization based on prior behavior). The distortion of the composite channel is the *interaction* of individual distortions rather than their sum, and the interaction can be nonlinear. A mildly selective channel with strong recursion may produce more distortion than a heavily warped channel without feedback.
 
 
 ## 4. Metrics of the Bend
@@ -182,7 +182,7 @@ $$\mathcal{H} = D_{JS}\big(q_i(W_t \mid M_{1:t}, E_\text{correct}),\; q^*(W_t \m
 
 $\mathcal{H} = 0$ means perfect correction: the agent snaps back to the benchmark. $\mathcal{H} > 0$ means *epistemic residue*. The history of distortion leaves a trace that survives contact with the truth.
 
-Hysteresis is the metric most directly relevant to democratic epistemology. A society can tolerate temporary distortion if correction is effective. When hysteresis is high, even perfect corrective information fails to undo accumulated damage: the bend has become load-bearing.
+Hysteresis is the metric most directly relevant to democratic epistemology. A society can tolerate temporary distortion if correction is effective. When hysteresis is high, even perfect corrective information fails to undo accumulated damage: the bend has set into the agent's posterior and structures every later update.
 
 
 ## 5. Toy Model
@@ -252,7 +252,7 @@ The toy model demonstrates the distinction the verbal framework asserts but cann
 
 The framework extends naturally from a single agent to a population. Suppose $N$ agents, each receiving $W_t$ through a potentially different channel $\mathcal{C}_{i}$ with parameters $\theta_{{\mathcal{C}}_i}$. The population's belief state is the *posterior field*: the distribution of posteriors $\{q_1, q_2, \ldots, q_N\}$ across agents.
 
-Public distortion shows up at the population level as a warped inferential field across many agents, not only as false belief at the individual level.
+Public distortion shows up at the population level as a warped inferential field across many agents, beyond the false belief visible at the individual level.
 
 ### 6.2 Posterior Shear
 
@@ -274,7 +274,7 @@ where $H$ is the entropy of the attention distribution over topics. The populati
 
 ### 6.4 Shadow Zones
 
-The dual of focal capture is *shadow zones*: regions of the world that become effectively invisible because the channel rarely transmits them. A shadow zone is a topic that the channel *could* transmit and *does not*, either because it fails selection criteria (not newsworthy, not engaging) or because it is actively suppressed.
+The dual of focal capture is *shadow zones*: regions of the world that become effectively invisible because the channel rarely transmits them. A shadow zone is a topic that the channel *could* transmit and *does not*, either because it fails selection criteria (judged unnewsworthy or low-engagement) or because it is actively suppressed.
 
 Shadow zones are epistemically dangerous precisely because they are invisible. An agent in a shadow zone does not know they are missing information; the channel provides no signal that a signal is absent.
 
@@ -321,12 +321,12 @@ At the geographic level, epistemic lensing predicts that local media ecology sho
 - **Institutional trust**: baseline trust in mediating institutions (journalism, government, science) conditions how agents weight channel outputs.
 - **Channel plurality**: the number of structurally independent information sources available in a locale.
 
-The framework treats some mediation as corrective. Journalism, expertise, and synthesis often increase fidelity. The object of study is processing that worsens calibration, not processing in general.
+The framework treats some mediation as corrective. Journalism, expertise, and synthesis often increase fidelity. The object of study is the subset of processing that worsens calibration.
 
 
-## 8. Limits
+## 8. What a comparative benchmark can and cannot fix
 
-**The benchmark is approximate.** We define distortion relative to a higher-fidelity channel, not relative to unmediated reality. In practice, determining which channel is "higher-fidelity" requires judgment and itself involves epistemic assumptions. The framework operates inside the hermeneutic circle, using relative fidelity as a tractable proxy.
+**The benchmark is approximate.** We define distortion relative to a higher-fidelity channel rather than to unmediated reality. In practice, determining which channel is "higher-fidelity" requires judgment and itself involves epistemic assumptions. The framework operates inside the hermeneutic circle, using relative fidelity as a tractable proxy.
 
 **Direct reality is often inaccessible.** For many questions of public concern (the state of the economy, the trajectory of a pandemic, the effects of a policy), no agent has direct access to $W_t$. All channels are mediated to some degree. The framework is comparative: it asks which mediation structures produce better-calibrated posteriors, rather than whether any structure achieves perfect calibration.
 
@@ -334,12 +334,12 @@ The framework treats some mediation as corrective. Journalism, expertise, and sy
 
 **The framework does not specify normative content.** Epistemic lensing describes *how* beliefs are deformed and stays silent on *which beliefs are correct*. It is a structural analysis. It can be applied symmetrically: any channel, regardless of its ideological orientation, can be assessed for information loss, posterior divergence, inferential curvature, and hysteresis. Whether channels are in fact symmetrically distortive is then an empirical question the metrics can settle rather than assume; work on asymmetric misinformation ecosystems (Benkler, Faris & Roberts, 2018) argues they are not, and the framework offers a way to quantify the asymmetry instead of stipulating it.
 
-**The toy model is illustrative.** The Bayesian agent in Section 5 is a normative benchmark, not a model of actual human cognition. Real agents exhibit motivated reasoning, identity-protective cognition, and bounded rationality that interact with channel structure in complex ways. The model demonstrates the *logic* of distortion; empirical validation requires the program outlined in Section 7.
+**The toy model is illustrative.** The Bayesian agent in Section 5 serves as a normative benchmark rather than a model of actual human cognition. Real agents exhibit motivated reasoning, identity-protective cognition, and bounded rationality that interact with channel structure in complex ways. The model demonstrates the *logic* of distortion; empirical validation requires the program outlined in Section 7.
 
 
-## 9. Conclusion
+## 9. Ignorance and distortion are different problems
 
-The problem is not that citizens are far from reality. The problem is that the route from reality to belief may have been curved in systematic ways.
+The distance between citizens and reality is the familiar diagnosis. The harder problem is that the route from reality to belief may have been curved in systematic ways.
 
 This paper has proposed *epistemic lensing* as a framework for describing, measuring, and analyzing that curvature. The framework distinguishes five elementary distortion operators (attenuation, selection, warping, amplification, recursion) and four metric families (information loss, posterior divergence, inferential curvature, hysteresis). It extends from individual agents to populations, where channel structure induces collective phenomena: posterior shear, focal capture, shadow zones, and narrative gravity wells.
 
