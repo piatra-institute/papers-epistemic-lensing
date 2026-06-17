@@ -44,7 +44,7 @@ The agent forms a posterior belief $q(W_t \mid \cdot)$ based on whichever stream
 
 ### 2.2 Markov-Blanket Framing
 
-The architecture has a precise correspondence in the Markov-blanket formalism (Pearl, 1988; Friston, 2013). In the language of active inference, an agent is separated from its environment by a Markov blanket: sensory states and active states that mediate all interaction between internal states and external states. The agent's internal model of the world is updated only through blanket-facing inputs.
+The architecture has a correspondence in the Markov-blanket formalism (Pearl, 1988; Friston, 2013). In the language of active inference, an agent is separated from its environment by a Markov blanket: sensory states and active states that mediate all interaction between internal states and external states. The agent's internal model of the world is updated only through blanket-facing inputs.
 
 A mediating channel $\mathcal{C}$ interposes between the environment and the blanket. It transforms the evidence stream before it reaches the agent's sensory surface:
 
@@ -276,7 +276,7 @@ where $H$ is the entropy of the attention distribution over topics. The populati
 
 The dual of focal capture is *shadow zones*: regions of the world that become effectively invisible because the channel rarely transmits them. A shadow zone is a topic that the channel *could* transmit and *does not*, either because it fails selection criteria (judged unnewsworthy or low-engagement) or because it is actively suppressed.
 
-Shadow zones are epistemically dangerous precisely because they are invisible. An agent in a shadow zone does not know they are missing information; the channel provides no signal that a signal is absent.
+Shadow zones are epistemically dangerous because they are invisible. An agent in a shadow zone does not know they are missing information; the channel provides no signal that a signal is absent.
 
 ### 6.5 Narrative Gravity Wells
 
