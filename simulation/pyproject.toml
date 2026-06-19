@@ -1,0 +1,11 @@
+[project]
+name = "epistemic-lensing-sim"
+version = "0.1.0"
+description = "Toy Bayesian model of epistemic lensing: five distortion operators and four distortion metrics on a Markov-blanket belief-updating channel"
+requires-python = ">=3.10"
+dependencies = [
+    "numpy>=1.26",
+]
+
+[tool.setuptools]
+py-modules = ["lensing_toy", "run_all"]

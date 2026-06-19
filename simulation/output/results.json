@@ -1,0 +1,130 @@
+{
+  "seed": 20260417,
+  "config": {
+    "time_steps": 200,
+    "t_correct": 150,
+    "t_measure": 200,
+    "h_window": 10,
+    "reps": 400,
+    "sigma_W": 1.0,
+    "sigma_X": 1.0,
+    "sigma_nu": 0.5,
+    "sigma_obs": 1.0,
+    "tau": 1.5,
+    "bias_b": 2.0,
+    "gain_g": 3.0
+  },
+  "metrics_note": "information_loss = 1 - I(W;M)/I(W;X), Gaussian mutual information; posterior_divergence = mean over t of JS(q_i, q*); inferential_curvature = slope(d mu_mediated / d W) - slope(d mu_benchmark / d W); hysteresis = mean JS(q_i, q*) over the h_window steps after a world reversal at t_correct (recovery lag). JS divergence in bits (base 2), bounded in [0,1].",
+  "scenarios": {
+    "A_attenuation": {
+      "channel": {
+        "alpha": 0.3,
+        "p_omit": 0.0,
+        "beta": 0.0,
+        "gamma": 0.0,
+        "gain": 1.0
+      },
+      "information_loss": 0.3665,
+      "posterior_divergence": 0.2165,
+      "divergence_location_shift": 0.8571,
+      "divergence_dispersion_change": 0.0,
+      "inferential_curvature": -0.0014,
+      "hysteresis": 0.2163
+    },
+    "B_selection_warping": {
+      "channel": {
+        "alpha": 1.0,
+        "p_omit": 0.5,
+        "beta": 0.4,
+        "gamma": 0.0,
+        "gain": 1.0
+      },
+      "information_loss": 0.883,
+      "posterior_divergence": 0.2435,
+      "divergence_location_shift": 1.0699,
+      "divergence_dispersion_change": 0.4405,
+      "inferential_curvature": -0.2665,
+      "hysteresis": 0.2477
+    },
+    "C_amplification": {
+      "channel": {
+        "alpha": 1.0,
+        "p_omit": 0.0,
+        "beta": 0.0,
+        "gamma": 0.0,
+        "gain": 3.0
+      },
+      "information_loss": 0.6762,
+      "posterior_divergence": 0.3616,
+      "divergence_location_shift": 1.391,
+      "divergence_dispersion_change": 0.0,
+      "inferential_curvature": 1.0586,
+      "hysteresis": 0.3495
+    },
+    "D_recursion": {
+      "channel": {
+        "alpha": 1.0,
+        "p_omit": 0.0,
+        "beta": 0.0,
+        "gamma": 0.7,
+        "gain": 1.0
+      },
+      "information_loss": 0.1561,
+      "posterior_divergence": 0.2388,
+      "divergence_location_shift": 0.9221,
+      "divergence_dispersion_change": 0.0,
+      "inferential_curvature": -0.4303,
+      "hysteresis": 0.2402
+    }
+  },
+  "reported_2dp": {
+    "A_attenuation.information_loss": 0.37,
+    "A_attenuation.information_loss.abs": 0.37,
+    "A_attenuation.posterior_divergence": 0.22,
+    "A_attenuation.posterior_divergence.abs": 0.22,
+    "A_attenuation.divergence_location_shift": 0.86,
+    "A_attenuation.divergence_location_shift.abs": 0.86,
+    "A_attenuation.divergence_dispersion_change": 0.0,
+    "A_attenuation.divergence_dispersion_change.abs": 0.0,
+    "A_attenuation.inferential_curvature": -0.0,
+    "A_attenuation.inferential_curvature.abs": 0.0,
+    "A_attenuation.hysteresis": 0.22,
+    "A_attenuation.hysteresis.abs": 0.22,
+    "B_selection_warping.information_loss": 0.88,
+    "B_selection_warping.information_loss.abs": 0.88,
+    "B_selection_warping.posterior_divergence": 0.24,
+    "B_selection_warping.posterior_divergence.abs": 0.24,
+    "B_selection_warping.divergence_location_shift": 1.07,
+    "B_selection_warping.divergence_location_shift.abs": 1.07,
+    "B_selection_warping.divergence_dispersion_change": 0.44,
+    "B_selection_warping.divergence_dispersion_change.abs": 0.44,
+    "B_selection_warping.inferential_curvature": -0.27,
+    "B_selection_warping.inferential_curvature.abs": 0.27,
+    "B_selection_warping.hysteresis": 0.25,
+    "B_selection_warping.hysteresis.abs": 0.25,
+    "C_amplification.information_loss": 0.68,
+    "C_amplification.information_loss.abs": 0.68,
+    "C_amplification.posterior_divergence": 0.36,
+    "C_amplification.posterior_divergence.abs": 0.36,
+    "C_amplification.divergence_location_shift": 1.39,
+    "C_amplification.divergence_location_shift.abs": 1.39,
+    "C_amplification.divergence_dispersion_change": 0.0,
+    "C_amplification.divergence_dispersion_change.abs": 0.0,
+    "C_amplification.inferential_curvature": 1.06,
+    "C_amplification.inferential_curvature.abs": 1.06,
+    "C_amplification.hysteresis": 0.35,
+    "C_amplification.hysteresis.abs": 0.35,
+    "D_recursion.information_loss": 0.16,
+    "D_recursion.information_loss.abs": 0.16,
+    "D_recursion.posterior_divergence": 0.24,
+    "D_recursion.posterior_divergence.abs": 0.24,
+    "D_recursion.divergence_location_shift": 0.92,
+    "D_recursion.divergence_location_shift.abs": 0.92,
+    "D_recursion.divergence_dispersion_change": 0.0,
+    "D_recursion.divergence_dispersion_change.abs": 0.0,
+    "D_recursion.inferential_curvature": -0.43,
+    "D_recursion.inferential_curvature.abs": 0.43,
+    "D_recursion.hysteresis": 0.24,
+    "D_recursion.hysteresis.abs": 0.24
+  }
+}

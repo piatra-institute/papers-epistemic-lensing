@@ -2,6 +2,18 @@
 
 Dated log of editorial passes and verification runs. Newest first.
 
+## 2026-06-19 — wire the toy model to real computed results
+
+A referee found, and we confirmed, that Section 5 reported specific metric numbers in the present tense as computed Results while no code produced them (the repo's NarrativeNavigator.py is unrelated, there was no results.json, claims_target was none, and an earlier audit entry admitted the values were "illustrative ≈"). Reporting invented numbers as results is disqualifying, so Section 5 is now backed by a real seeded simulation.
+
+Simulation: new `simulation/lensing_toy.py` + `run_all.py` (+ pyproject, numpy only). A one-dimensional Kalman agent updates a Gaussian posterior over a random-walk world. The five operators are implemented faithfully to Section 3: attenuation as reduced signal-to-noise (added variance, no mean shift), selection as per-step signal drops the agent cannot distinguish from absence, warping as an additive directional bias, amplification as gain on extreme innovations, recursion as autoregressive mixing of prior channel output. The four metrics are computed: information loss from Gaussian mutual information, posterior divergence as mean Jensen-Shannon between mediated and benchmark posteriors (with a location/dispersion decomposition), inferential curvature as the difference in the slope of belief-change on true world-change, hysteresis as residual divergence over a recovery window after a world reversal. 400 seeded reps; one command writes `simulation/output/results.json`.
+
+Section 5 rewritten to report the computed numbers (L: A 0.37, B 0.88, C 0.68, D 0.16; D: A 0.22, B 0.24, C 0.36, D 0.24; kappa: A -0.00, B -0.27, C +1.06, D -0.43; H: A 0.22, B 0.25, C 0.35, D 0.24). The new numbers differ from the old illustrative ones; honesty over matching. Two honest departures from the old narrative are reported rather than hidden: amplification, not selection, now shows the highest posterior divergence, and the single-agent post-reversal residual tracks each channel's steady-state distortion rather than isolating a recursion-specific memory residue. The "confidently wrong" claim is carried by the location/dispersion decomposition (three of four channels shift location with zero dispersion change), which is the sharper evidence. Model choices left open by the paper are documented inline in the code (tagged CHOICE) and noted in §5.
+
+Metadata: has_simulation already true; claims_target set to results.json.
+
+Verification: voice 0 errors / 0 warns; claims 0 decimals without a results.json match; refs advisory unchanged (citation set untouched); build clean; check => PASS (web WARN only, deployed PDF differs from the local rebuild; sync writes outside the paper dir and was left to the publish step).
+
 ## 2026-06-13 — voice reform
 
 Editorial pass to remove AI-writing tells per tooling/docs/voice.md.

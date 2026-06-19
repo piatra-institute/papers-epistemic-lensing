@@ -201,49 +201,50 @@ $$X_t = W_t + \xi_t, \quad \xi_t \sim \mathcal{N}(0, \sigma_X^2)$$
 
 **Mediated stream.** The channel applies a parameterized transformation:
 
-$$M_t = \alpha \cdot \mathcal{S}(X_t) + \beta \cdot b + \gamma \cdot M_{t-1} + \nu_t$$
+$$M_t = (1-\gamma)\big(\mathcal{S}(X_t) + \beta \cdot b\big) + \gamma \cdot M_{t-1} + \nu_t$$
 
 where:
 
-- $\alpha \in [0,1]$ controls attenuation (signal strength),
-- $\mathcal{S}$ is a selection function that zeros out the signal with probability $p_\text{omit}$,
+- $\mathcal{S}$ is a selection function that drops the signal with probability $p_\text{omit}$ (on a dropped step the agent receives channel noise carrying no information about $W_t$ and runs no update),
 - $\beta$ controls warping (injection of directional bias $b$),
 - $\gamma \in [0,1)$ controls recursion (dependence on prior channel output),
 - $\nu_t \sim \mathcal{N}(0, \sigma_\nu^2)$ is channel noise.
 
-Amplification is modeled by scaling the channel output by a gain factor $g > 1$ on selected time steps.
+Attenuation is modeled as a reduction in signal-to-noise: a parameter $\alpha \in (0,1]$ adds $(1/\alpha - 1)\,\sigma_X^2$ of variance, so the channel still tracks $X_t$ with no directional bias but transmits less information. Modeling attenuation as a multiplicative shrinkage of the mean was avoided because that injects the directional bias the framework assigns to warping. Amplification is modeled by scaling the surprising part of the signal, the innovation $X_t - X_{t-1}$, by a gain factor $g > 1$ whenever that jump exceeds a threshold $\tau$, so the operator inflates rare events rather than rescaling the level.
 
-**Agent.** A Bayesian updater maintaining a Gaussian posterior $q_t = \mathcal{N}(\mu_t, \sigma_t^2)$:
+**Agent.** A Bayesian updater (a one-dimensional Kalman filter on the random-walk prior) maintaining a Gaussian posterior $q_t = \mathcal{N}(\mu_t, \sigma_t^2)$, with Kalman gain $k_t = \sigma_t^2 / (\sigma_t^2 + \sigma_\text{obs}^2)$:
 
-$$\mu_t = \frac{\sigma_t^2}{\sigma_t^2 + \sigma_\text{obs}^2} \cdot M_t + \frac{\sigma_\text{obs}^2}{\sigma_t^2 + \sigma_\text{obs}^2} \cdot \mu_{t-1}$$
+$$\mu_t = k_t \cdot M_t + (1 - k_t) \cdot \mu_{t-1}$$
 
-with an optional *prior strength* parameter $\pi$ that weights the agent's existing belief relative to incoming evidence, and an optional *motivated reasoning* parameter $\rho$ that downweights evidence inconsistent with the current posterior.
+Crucially, the agent does not observe the channel $\mathcal{C}$ (Section 2.2): it uses a fixed assumed observation noise $\sigma_\text{obs}$ and treats $M_t$ as direct evidence. It cannot widen its posterior to account for a degraded channel it cannot see. The same agent run on the high-fidelity stream $X_t$ supplies the benchmark posterior $q^*$; run on $M_t$ it supplies the mediated posterior $q_i$. All distortion is measured as $q_i$ relative to $q^*$.
 
 ### 5.2 Scenarios
 
-We run the model under four channel configurations, each isolating a different distortion operator, with all other parameters at baseline.
+We run the model under four channel configurations, each isolating a different distortion operator, with all other parameters at baseline. Each metric is averaged over 400 seeded repetitions; the run is reproducible from a single command and writes `simulation/output/results.json`.
 
-**Scenario A: Pure attenuation.** $\alpha = 0.3$, all other distortion parameters zero. The agent receives a weakened signal. *Expected outcome*: wider posterior, slower tracking of $W_t$, with no systematic directional error.
+**Scenario A: Pure attenuation.** $\alpha = 0.3$, all other distortion parameters zero. The agent receives a low signal-to-noise signal. *Hypothesis*: tracking degraded, with no systematic directional pull.
 
-**Scenario B: Selection + warping.** $p_\text{omit} = 0.5$, $\beta = 0.4$ (positive bias). The agent misses half the evidence and receives a directionally biased remainder. *Expected outcome*: posterior shifted toward $b$, with intermittent tracking when unomitted signals arrive.
+**Scenario B: Selection + warping.** $p_\text{omit} = 0.5$, $\beta = 0.4$ (positive bias). The agent misses half the evidence and receives a directionally biased remainder. *Hypothesis*: posterior shifted toward $b$, with intermittent tracking when transmitted signals arrive.
 
-**Scenario C: Amplification.** $g = 3$ on signals with $|X_t| > \tau$ (extreme events amplified). *Expected outcome*: salience inflation, the agent overreacts to extreme signals and underweights mundane ones. Posterior oscillates more than $q^*$.
+**Scenario C: Amplification.** $g = 3$ on innovations with $|X_t - X_{t-1}| > \tau$ (rare jumps amplified). *Hypothesis*: salience inflation, the agent overreacts to surprising signals. Posterior oscillates more than $q^*$.
 
-**Scenario D: Recursion.** $\gamma = 0.7$ (strong autoregressive feedback). *Expected outcome*: hysteresis, the posterior tracks $W_t$ with a lag and fails to fully correct when $W_t$ reverses direction. The channel's memory overwhelms new evidence.
+**Scenario D: Recursion.** $\gamma = 0.7$ (strong autoregressive feedback). *Hypothesis*: the channel mixes old and new signal, so the posterior tracks $W_t$ with a lag.
 
 ### 5.3 Results
 
-**Information loss** ($\mathcal{L}$): Highest under pure attenuation (Scenario A, $\mathcal{L} \approx 0.70$) and selection (B, $\mathcal{L} \approx 0.55$). Amplification (C) preserves information ($\mathcal{L} \approx 0.05$) and distorts its weighting. Recursion (D) has moderate loss ($\mathcal{L} \approx 0.35$) because the channel mixes old and new signals.
+All values below are computed by the simulation and read directly from `results.json`. Divergences are Jensen-Shannon, in bits, bounded in $[0,1]$.
 
-**Posterior divergence** ($\mathcal{D}$): Lowest under pure attenuation (A, $\mathcal{D} \approx 0.08$); the agent is uncertain rather than wrong. Highest under selection + warping (B, $\mathcal{D} \approx 0.31$); the agent is confidently wrong. Amplification (C, $\mathcal{D} \approx 0.19$) and recursion (D, $\mathcal{D} \approx 0.24$) sit between.
+**Information loss** ($\mathcal{L}$): Highest under selection + warping (Scenario B, $\mathcal{L} = 0.88$), where dropping half the steps destroys the most mutual information. Amplification (C, $\mathcal{L} = 0.68$) is also high, because scaling rare innovations decorrelates $M_t$ from $W_t$. Pure attenuation is moderate (A, $\mathcal{L} = 0.37$). Recursion is lowest (D, $\mathcal{L} = 0.16$): the channel preserves the signal and only delays it.
 
-**Inferential curvature** ($\kappa$): Near zero under attenuation (the agent updates correctly, weakly). Strongly positive (magnification) under amplification, where the agent overreacts to extreme evidence. Mixed under recursion: positive at short lags (recent channel memory reinforces), negative at long lags (old memory occludes new evidence).
+**Posterior divergence** ($\mathcal{D}$): Highest under amplification (C, $\mathcal{D} = 0.36$). The other three cluster tightly (A $= 0.22$, B $= 0.24$, D $= 0.24$), so the scalar alone understates how differently the channels fail. The decomposition into location shift and dispersion change (Section 4.2) separates them. Every channel's divergence is dominated by location shift (A $= 0.86$, B $= 1.07$, C $= 1.39$, D $= 0.92$); only selection + warping also widens the posterior (dispersion change $= 0.44$), because dropped steps leave the agent genuinely less certain. The other three show a dispersion change of $0.00$: the agent stays just as confident while being wrong, since it cannot see the channel and so never widens to compensate. This is the formal content of *confidently wrong*.
 
-**Hysteresis** ($\mathcal{H}$): The critical metric. After injecting a corrective signal at $t = 150$ (the true $W_t$ is revealed directly), we measure residual divergence at $t = 200$. Under attenuation and amplification, $\mathcal{H} \approx 0$, with correction effective. Under selection + warping, $\mathcal{H} \approx 0.12$, where the warping has deposited a residue in the posterior that survives correction. Under recursion, $\mathcal{H} \approx 0.21$; the channel's memory actively re-distorts the signal after correction. The agent temporarily snaps toward $q^*$ at $t = 150$, then drifts back as the recursive channel reasserts its influence.
+**Inferential curvature** ($\kappa$): Near zero under attenuation (A, $\kappa = -0.00$): the agent tracks at the right sensitivity, only noisier. Strongly positive under amplification (C, $\kappa = +1.06$): magnification, the agent updates far more than the evidence warrants. Negative under selection + warping (B, $\kappa = -0.27$) and recursion (D, $\kappa = -0.43$): occlusion, the agent updates too little, because dropped steps and stale channel memory both blunt the response to new evidence. Curvature is the metric that most cleanly separates the operators, even where posterior divergence does not.
+
+**Hysteresis** ($\mathcal{H}$): At $t = 150$ the world sharply reverses direction; the corrective evidence then arrives through each channel rather than by oracle, and we measure the residual divergence over the following 10 steps. Amplification shows the largest residue (C, $\mathcal{H} = 0.35$) because the reversal is itself a large innovation that the channel over-amplifies. Selection + warping (B, $\mathcal{H} = 0.25$) and recursion (D, $\mathcal{H} = 0.24$) follow, attenuation last (A, $\mathcal{H} = 0.22$). One honest finding: in this minimal single-agent model the post-reversal residual tracks each channel's ongoing steady-state distortion rather than isolating a memory-specific residue. Recursion lags, but a single reversal does not make it uniquely uncorrectable; lock-in compounds under sustained recursion across a population, which a one-shot correction leaves untouched (Section 6.5).
 
 ### 5.4 Key Finding
 
-The toy model demonstrates the distinction the verbal framework asserts but cannot prove alone: ignorance and distortion are qualitatively different. Attenuation produces high information loss together with low posterior divergence and zero hysteresis. The agent is uncertain and correctable. Warping and recursion produce lower information loss and higher posterior divergence and high hysteresis. The agent is confident, wrong, and resistant to correction. Two failure modes: a society that lacks information, and a society whose route from reality to belief has been curved.
+The model makes the framework's central distinction quantitative: ignorance and distortion are different failures with different signatures. Attenuation is ignorance: high information loss ($0.37$), curvature near zero, divergence carried by random location error with no confident bias. The agent is wrong only by being noisy. Amplification and selection-plus-warping are distortion: amplification combines the highest divergence ($0.36$) with strong positive curvature ($+1.06$), selection the highest information loss ($0.88$) with negative curvature ($-0.27$). The decomposition is the sharpest evidence: three of the four channels distort the posterior's location while leaving its width unchanged, so the agent is confident and wrong at once. The blanket assumption that the agent cannot see its channel is what makes confident error, rather than honest uncertainty, the default response to a degraded signal.
 
 
 ## 6. Population Extension
@@ -334,7 +335,7 @@ The framework treats some mediation as corrective. Journalism, expertise, and sy
 
 **The framework does not specify normative content.** Epistemic lensing describes *how* beliefs are deformed and stays silent on *which beliefs are correct*. It is a structural analysis. It can be applied symmetrically: any channel, regardless of its ideological orientation, can be assessed for information loss, posterior divergence, inferential curvature, and hysteresis. Whether channels are in fact symmetrically distortive is then an empirical question the metrics can settle rather than assume; work on asymmetric misinformation ecosystems (Benkler, Faris & Roberts, 2018) argues they are not, and the framework offers a way to quantify the asymmetry instead of stipulating it.
 
-**The toy model is illustrative.** The Bayesian agent in Section 5 serves as a normative benchmark rather than a model of actual human cognition. Real agents exhibit motivated reasoning, identity-protective cognition, and bounded rationality that interact with channel structure in complex ways. The model demonstrates the *logic* of distortion; empirical validation requires the program outlined in Section 7.
+**The toy model is a logic demonstration.** The numbers in Section 5 are computed and reproducible, but the Bayesian agent serves as a normative benchmark rather than a model of actual human cognition. Real agents exhibit motivated reasoning, identity-protective cognition, and bounded rationality that interact with channel structure in complex ways. The model demonstrates the *logic* of distortion; empirical validation requires the program outlined in Section 7.
 
 
 ## 9. Ignorance and distortion are different problems
