@@ -353,8 +353,6 @@ Modern publics live inside information optics. Some channels clarify, compress, 
 
 Benkler, Y., Faris, R., & Roberts, H. (2018). *Network Propaganda: Manipulation, Disinformation, and Radicalization in American Politics*. Oxford University Press.
 
-Bernstein, J., Wang, Y.-X., & Braverman, M. (2018). signSGD: Compressed optimisation for non-convex problems. *Proceedings of the 35th International Conference on Machine Learning*.
-
 Friston, K. (2013). Life as we know it. *Journal of the Royal Society Interface*, 10(86), 20130475.
 
 Friston, K., FitzGerald, T., Rigoli, F., Schwartenbeck, P., & Pezzulo, G. (2017). Active inference: A process theory. *Neural Computation*, 29(1), 1--49.
@@ -368,8 +366,6 @@ Pariser, E. (2011). *The Filter Bubble: What the Internet is Hiding from You*. P
 Pearl, J. (1988). *Probabilistic Reasoning in Intelligent Systems*. Morgan Kaufmann.
 
 Shannon, C. E. (1948). A mathematical theory of communication. *Bell System Technical Journal*, 27(3), 379--423.
-
-Sunstein, C. R. (2001). *Echo Chambers: Bush v. Gore, Impeachment, and Beyond*. Princeton University Press.
 
 Tversky, A., & Kahneman, D. (1974). Judgment under uncertainty: Heuristics and biases. *Science*, 185(4157), 1124--1131.
 

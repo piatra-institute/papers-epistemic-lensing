@@ -61,3 +61,12 @@ Verification:
 - voice: 0 errors (inline-contrastive warns to review).
 - refs: advisory — detached narrative citations not reliably auto-resolved;
   reconcile sources.md against prose by hand on the next refresh.
+
+## 2026-07-02 — Corpus reform, Phase 0 (integrity)
+Removed a fabricated bibliography entry: Sunstein, C. R. (2001), *Echo Chambers:
+Bush v. Gore, Impeachment, and Beyond* — no such book exists (the 2001 Sunstein
+title is *Republic.com*). It was orphaned (cited nowhere in text) and appeared
+identically in this paper and one other, evidence of a shared uncurated
+bibliography. Also removed the orphan signSGD (Bernstein et al. 2018) entry
+where present. Rebuilt + synced. Remaining uncited refs to be reconciled in the
+Phase 2 rewrite of this paper.
