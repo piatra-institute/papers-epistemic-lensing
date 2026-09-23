@@ -1,14 +1,32 @@
 slug: epistemic-lensing
 web_slug: epistemic-lensing
-title: "Epistemic Lensing: A Markov-Blanket Account of Mediated Belief Distortion"
-header: "Epistemic Lensing"
-created: "2026-04"        # inception month (drives YYYY/MM archive path)
-date: "April 2026"            # publication month (shown on web)
+title: 'Epistemic Lensing: A Markov-Blanket Account of Mediated Belief Distortion'
+header: Epistemic Lensing
+created: 2026-04
+date: April 2026
 paper_dir: paper
 has_simulation: true
-claims_target: results.json   # results.json | claim-ledger | none
+claims_target: results.json
 repo: git@github.com:piatra-institute/papers-epistemic-lensing.git
 github: https://github.com/piatra-institute/papers-epistemic-lensing
-status: published              # draft | built | published
-abstract: |-
-  This paper proposes epistemic lensing as a formal concept for describing how mediated information channels deform belief formation. Using a Markov-blanket framing, we distinguish direct environmental evidence from processed informational inputs and define distortion as divergence between the posterior supported by a higher-fidelity channel and the posterior induced by a mediated one. We introduce five distortion operators (attenuation, selection, warping, amplification, recursion) and four families of metrics: information loss, posterior divergence, inferential curvature, and hysteresis. A toy simulation shows how channel structure produces systematic overreaction, underreaction, salience warping, and persistent miscalibration in both individual agents and populations. We extend the framework to populations and introduce posterior shear, focal capture, shadow zones, and narrative gravity wells as collective-level phenomena. The framework reads as a bridge between active inference, information theory, media ecology, and political cognition.
+status: published
+abstract: 'Public epistemic failure is usually described by volume of information or by discrete false
+  claims. We describe it by the shape of the channel between world and belief. *Epistemic lensing* is
+  defined, within a Markov-blanket framing, as systematic divergence between the posterior an agent forms
+  from a mediated stream and the benchmark posterior a higher-fidelity channel would support. Five distortion
+  operators (attenuation, selection, warping, amplification, recursion) and four metric families (information
+  loss, posterior divergence, inferential curvature, hysteresis) make the concept measurable. A seeded
+  toy model, in which a one-dimensional Kalman agent that cannot observe its channel tracks a random-walk
+  world over 400 repetitions, gives each operator a distinct signature. Attenuation loses information
+  (0.37) at near-zero curvature. Selection with warping loses the most (0.88) with negative curvature
+  ($-0.27$). Amplification produces the largest posterior divergence (0.36 bits) and strong positive curvature
+  ($+1.06$). Recursion loses least (0.16) and blunts updating ($-0.43$). In three of the four channels
+  the mediated posterior is displaced while its width is unchanged, so the agent is confidently wrong.
+  After a world reversal, residual divergence tracks each channel''s steady-state distortion and does
+  not isolate a memory-specific residue. Extended to populations, the framework defines posterior shear,
+  focal capture, shadow zones, and narrative gravity wells. Ignorance and distortion have different signatures
+  and call for different remedies: more signal in the first case, differently structured channels in the
+  second.'
+web_blurb: Mediated channels can deform belief without removing information. In a Kalman-agent model,
+  attenuation, selection, amplification and recursion leave distinct signatures, and three of four channels
+  displace the posterior while leaving the agent's confidence unchanged.

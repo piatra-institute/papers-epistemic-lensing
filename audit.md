@@ -2,6 +2,17 @@
 
 Dated log of editorial passes and verification runs. Newest first.
 
+## 2026-09-23 — prose revision
+
+Prose rewritten against the house standards. Headings: Abstract; 1 Introduction; 2 Theoretical Framework; 3 Distortion Operators; 4 Distortion Metrics (was "Metrics of the Bend"); 5 Toy Simulation (5.4 Ignorance and Distortion in the Simulation, was "Key Finding"); 6 Population Extension; 7 Empirical Program; 8 Limitations (was "What a comparative benchmark can and cannot fix"); 9 Conclusion (was "Ignorance and distortion are different problems"); Reproducibility (new).
+Tic counts before -> after: "rather than" 18 -> 0; "this paper" 3 -> 0; "not X but Y" 1 -> 0; sentence-initial "This is" 1 -> 0; merely/simply 3 -> 0.
+Corrections and clarifications:
+  - Section 5.4 called attenuation's information loss (0.37) "high" while 5.3 called it "moderate"; now "moderate" in both places.
+  - The location-shift figures (0.86, 1.07, 1.39, 0.92) and dispersion change (0.44) were placed in a paragraph whose units were declared as Jensen-Shannon bits; they are mean absolute posterior-mean differences and mean posterior-sd differences in world-state units, and the text now says so. An Estimators paragraph states how each metric is computed (from the metrics_note in results.json).
+  - The dispersion change of 0.00 for channels A, C, D is now stated as identically zero by construction (the agent updates every step with a fixed assumed noise, so its variance recursion equals the benchmark's).
+  - Previously uncited bibliography entries now cited where they support existing statements: Shannon 1948 (mutual information), Friston et al. 2017 (active inference), Tversky & Kahneman 1974 (availability heuristic), Pariser 2011 (personalization), Lewandowsky et al. 2012 and Walter et al. 2020 (continued influence, fact-checking) in 4.4. Kahneman & Tversky 1979 remains uncited.
+Grid/number audit: the model has no thresholds, optima or grid-derived values; every metric is a 400-repetition mean at a single parameter setting. All prose numbers match results.json reported_2dp. No simulation code changed; results.json untouched.
+
 ## 2026-06-19 — wire the toy model to real computed results
 
 A referee found, and we confirmed, that Section 5 reported specific metric numbers in the present tense as computed Results while no code produced them (the repo's NarrativeNavigator.py is unrelated, there was no results.json, claims_target was none, and an earlier audit entry admitted the values were "illustrative ≈"). Reporting invented numbers as results is disqualifying, so Section 5 is now backed by a real seeded simulation.
