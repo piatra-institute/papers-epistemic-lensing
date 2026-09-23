@@ -6,7 +6,7 @@ created: 2026-04
 date: April 2026
 paper_dir: paper
 has_simulation: true
-claims_target: results.json
+claims_target: claim-ledger
 repo: git@github.com:piatra-institute/papers-epistemic-lensing.git
 github: https://github.com/piatra-institute/papers-epistemic-lensing
 status: published

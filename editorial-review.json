@@ -1,10 +1,10 @@
 {
-  "manuscript_sha256": "da2a1089e5e9f39612cd80135fac2a4368944a5bfca00f0e6b94f0cbc738009f",
+  "manuscript_sha256": "775907855e338f4332d6b321cebcb68248ffec8ca5630f3c974f751c804f03e2",
   "full_read": true,
   "argument_review": true,
   "structure_review": true,
   "voice_review": true,
   "source_review": true,
   "final_read": true,
-  "notes": "Prose revision: descriptive headings (Distortion Metrics, Toy Simulation, Limitations, Conclusion, new Reproducibility); self-reference, reflexive contrasts and optical flourishes removed; abstract rewritten at 227 words with the computed metrics; every number and citation preserved."
+  "notes": "Structured-evidence migration: inline bibliography converted to references.yaml (CSL) with Pandoc [@id] citations; one uncited entry (Kahneman and Tversky 1979) removed; claims.yaml ledger and execution receipt added; prose unchanged."
 }

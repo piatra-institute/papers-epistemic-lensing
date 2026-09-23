@@ -1,0 +1,97 @@
+[
+ {
+  "id": "benkler2018",
+  "families": [
+   "Benkler",
+   "Faris",
+   "Roberts"
+  ],
+  "authors_text": "Benkler, Y., Faris, R., & Roberts, H.",
+  "year": "2018",
+  "status": "UNVERIFIED"
+ },
+ {
+  "id": "friston2013",
+  "families": [
+   "Friston"
+  ],
+  "authors_text": "Friston, K.",
+  "year": "2013",
+  "status": "VERIFIED-CROSSREF"
+ },
+ {
+  "id": "friston2017",
+  "families": [
+   "Friston",
+   "FitzGerald",
+   "Rigoli",
+   "Schwartenbeck",
+   "Pezzulo"
+  ],
+  "authors_text": "Friston, K., FitzGerald, T., Rigoli, F., Schwartenbeck, P., & Pezzulo, G.",
+  "year": "2017",
+  "status": "VERIFIED-CROSSREF"
+ },
+ {
+  "id": "lewandowsky2012",
+  "families": [
+   "Lewandowsky",
+   "Ecker",
+   "Seifert",
+   "Schwarz",
+   "Cook"
+  ],
+  "authors_text": "Lewandowsky, S., Ecker, U. K., Seifert, C. M., Schwarz, N., & Cook, J.",
+  "year": "2012",
+  "status": "UNVERIFIED"
+ },
+ {
+  "id": "pariser2011",
+  "families": [
+   "Pariser"
+  ],
+  "authors_text": "Pariser, E.",
+  "year": "2011",
+  "status": "VERIFIED-CROSSREF"
+ },
+ {
+  "id": "pearl1988",
+  "families": [
+   "Pearl"
+  ],
+  "authors_text": "Pearl, J.",
+  "year": "1988",
+  "status": "UNVERIFIED"
+ },
+ {
+  "id": "shannon1948",
+  "families": [
+   "Shannon"
+  ],
+  "authors_text": "Shannon, C. E.",
+  "year": "1948",
+  "status": "VERIFIED-CROSSREF"
+ },
+ {
+  "id": "tversky1974",
+  "families": [
+   "Tversky",
+   "Kahneman"
+  ],
+  "authors_text": "Tversky, A., & Kahneman, D.",
+  "year": "1974",
+  "status": "VERIFIED-CROSSREF"
+ },
+ {
+  "id": "walter2020",
+  "families": [
+   "Walter",
+   "Cohen",
+   "Holbert",
+   "Morag"
+  ],
+  "authors_text": "Walter, N., Cohen, J., Holbert, R. L., & Morag, Y.",
+  "year": "2020",
+  "status": "UNVERIFIED"
+ }
+]

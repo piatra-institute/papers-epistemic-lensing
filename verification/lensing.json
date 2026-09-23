@@ -1,0 +1,37 @@
+{
+  "schema": 1,
+  "id": "lensing",
+  "started": "2026-09-23T04:14:58.465597+00:00",
+  "finished": "2026-09-23T04:15:35.618837+00:00",
+  "command": [
+    "uv",
+    "run",
+    "python",
+    "run_all.py"
+  ],
+  "cwd": "simulation",
+  "runtime": {
+    "scope": "recorder",
+    "python": "3.12.4 (v3.12.4:8e8a4baf65, Jun  6 2024, 17:33:18) [Clang 13.0.0 (clang-1300.0.29.30)]",
+    "platform": "macOS-15.1-arm64-arm-64bit"
+  },
+  "execution_result": null,
+  "execution": {
+    "status": "PASS",
+    "exit_code": 0,
+    "detail": "command completed"
+  },
+  "input_scope": "execution-v1",
+  "additional_inputs": [],
+  "inputs": {
+    "simulation/NarrativeNavigator.py": "7c9fd2df1f37a575e87f536095d6f60e3a9d68a0dcbfeac90b7c232927124e10",
+    "simulation/lensing_toy.py": "8cd9a064ea01b4058d9287f0447d3553a3fe6f6c8ee78da49c550eb3a6b7b3d6",
+    "simulation/narrative_navigator/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "simulation/pyproject.toml": "b8b8907deb11b7690ed761f79ce748a0e6bc7d89a36b0970251351e0c8932f61",
+    "simulation/run_all.py": "be13ed6fe9119365a98ef004fa78e8130ea24d2eb267494d646aa8d8846a3027",
+    "simulation/uv.lock": "0fccfc09e9690535583a2bec63633d5a8bdf782a7ba555582450293c94a00e5f"
+  },
+  "artifacts": {
+    "simulation/output/results.json": "12c71b92c546e1047661efdf9883b41571d26ee4ea19e2e3f7fb145a36d2e08b"
+  }
+}

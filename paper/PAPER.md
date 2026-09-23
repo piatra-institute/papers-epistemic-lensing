@@ -42,7 +42,7 @@ The agent forms a posterior belief $q(W_t \mid \cdot)$ from whichever stream it 
 
 ### 2.2 Markov-Blanket Framing
 
-The architecture corresponds to the Markov-blanket formalism (Pearl, 1988; Friston, 2013). In active inference, an agent is separated from its environment by a Markov blanket: sensory and active states that mediate all interaction between internal and external states (Friston et al., 2017). The agent's internal model of the world is updated only through blanket-facing inputs.
+The architecture corresponds to the Markov-blanket formalism [@pearl1988; @friston2013]. In active inference, an agent is separated from its environment by a Markov blanket: sensory and active states that mediate all interaction between internal and external states [@friston2017]. The agent's internal model of the world is updated only through blanket-facing inputs.
 
 A mediating channel $\mathcal{C}$ sits between the environment and the blanket and transforms the evidence stream before it reaches the agent's sensory surface:
 
@@ -75,7 +75,7 @@ Attenuation removes signal. The channel transmits less information than it recei
 
 $$I(W_t; M_t) < I(W_t; X_t)$$
 
-where $I(\cdot;\cdot)$ is mutual information (Shannon, 1948). Attenuation increases uncertainty without biasing inference in a particular direction. The posterior becomes wider and less confident; in the limit, total attenuation leaves the agent at maximum entropy.
+where $I(\cdot;\cdot)$ is mutual information [@shannon1948]. Attenuation increases uncertainty without biasing inference in a particular direction. The posterior becomes wider and less confident; in the limit, total attenuation leaves the agent at maximum entropy.
 
 *Examples*: news deserts (geographic attenuation of local information), paywalls (economic attenuation), language barriers, algorithmic deprioritization of low-engagement content.
 
@@ -109,7 +109,7 @@ $$M_t^{(j)} = g_j \cdot X_t^{(j)}, \quad g_j > 1 \text{ for some } j$$
 
 where $g_j$ is a gain factor on dimension $j$ of the evidence. Amplification produces *salience inflation*: the agent treats certain signals as more informative than they are. If the amplified cues are diagnostic, performance improves. If they are not, calibration degrades because posterior mass concentrates on a narrow subset of the evidence.
 
-*Examples*: sensationalist coverage of rare events, trending algorithms that promote high-engagement content regardless of base rate, exploitation of the availability heuristic (Tversky & Kahneman, 1974).
+*Examples*: sensationalist coverage of rare events, trending algorithms that promote high-engagement content regardless of base rate, exploitation of the availability heuristic [@tversky1974].
 
 ### 3.5 Recursion $\mathcal{R}$
 
@@ -119,7 +119,7 @@ $$M_{t+1} = \mathcal{C}(X_{t+1}, M_t)$$
 
 The channel at time $t+1$ depends on new evidence and on its own prior output. The result is *path dependence*: beliefs at $t$ shape the channel at $t+1$, which shapes beliefs at $t+2$. Recursion is the operator responsible for *hysteresis*, the persistence of distorted beliefs after corrective evidence arrives, and for *lock-in*, in which initial channel biases compound over time.
 
-*Examples*: recommendation algorithms that personalize content by prior engagement (Pariser, 2011), echo chambers, confirmation-seeking information behavior, viral amplification of early framings.
+*Examples*: recommendation algorithms that personalize content by prior engagement [@pariser2011], echo chambers, confirmation-seeking information behavior, viral amplification of early framings.
 
 ### 3.6 Composition
 
@@ -176,7 +176,7 @@ Hysteresis measures how much distortion persists after corrective evidence arriv
 
 $$\mathcal{H} = D_{JS}\big(q_i(W_t \mid M_{1:t}, E_\text{correct}),\; q^*(W_t \mid X_{1:t}, E_\text{correct})\big)$$
 
-$\mathcal{H} = 0$ means complete correction, with the agent returning to the benchmark. $\mathcal{H} > 0$ means *epistemic residue*: the history of distortion leaves a trace that survives corrective evidence. The empirical counterpart is the continued influence of misinformation after retraction (Lewandowsky et al., 2012) and the limited and variable effect of fact-checking (Walter et al., 2020).
+$\mathcal{H} = 0$ means complete correction, with the agent returning to the benchmark. $\mathcal{H} > 0$ means *epistemic residue*: the history of distortion leaves a trace that survives corrective evidence. The empirical counterpart is the continued influence of misinformation after retraction [@lewandowsky2012] and the limited and variable effect of fact-checking [@walter2020].
 
 Hysteresis is the metric most directly relevant to democratic epistemology. A society can tolerate temporary distortion if correction works. When hysteresis is high, even accurate corrective information fails to undo accumulated distortion, which has settled into the agent's posterior and conditions every later update.
 
@@ -331,7 +331,7 @@ Across all three levels, part of mediation is corrective, since journalism, expe
 
 **Reliance on mediation is unavoidable.** Most knowledge is second-hand, and a prescription that citizens bypass all channels would be impractical and incoherent. The task is to recognize when a channel's structure deforms inference and when it supports it.
 
-**The framework is silent on normative content.** Epistemic lensing describes *how* beliefs are deformed and says nothing about *which beliefs are correct*. It applies symmetrically: any channel, whatever its ideological orientation, can be assessed for information loss, posterior divergence, inferential curvature, and hysteresis. Whether channels are in fact symmetrically distortive is then an empirical question for the metrics. Work on asymmetric misinformation ecosystems argues that they are not (Benkler, Faris & Roberts, 2018), and the metrics offer a way to quantify that asymmetry.
+**The framework is silent on normative content.** Epistemic lensing describes *how* beliefs are deformed and says nothing about *which beliefs are correct*. It applies symmetrically: any channel, whatever its ideological orientation, can be assessed for information loss, posterior divergence, inferential curvature, and hysteresis. Whether channels are in fact symmetrically distortive is then an empirical question for the metrics. Work on asymmetric misinformation ecosystems argues that they are not [@benkler2018], and the metrics offer a way to quantify that asymmetry.
 
 **The toy model demonstrates logic and does not model human cognition.** The numbers in Section 5 are computed and reproducible, but the Bayesian agent is a normative benchmark. Real agents show motivated reasoning, identity-protective cognition, and bounded rationality that interact with channel structure in complex ways. The operator parameters are single illustrative settings, the model is one-dimensional, and the single-agent hysteresis test cannot represent population-level lock-in. Empirical validation requires the program of Section 7.
 
@@ -349,23 +349,3 @@ The toy model is implemented in `simulation/lensing_toy.py` (numpy only) and run
 
 
 ## References
-
-Benkler, Y., Faris, R., & Roberts, H. (2018). *Network Propaganda: Manipulation, Disinformation, and Radicalization in American Politics*. Oxford University Press.
-
-Friston, K. (2013). Life as we know it. *Journal of the Royal Society Interface*, 10(86), 20130475.
-
-Friston, K., FitzGerald, T., Rigoli, F., Schwartenbeck, P., & Pezzulo, G. (2017). Active inference: A process theory. *Neural Computation*, 29(1), 1--49.
-
-Kahneman, D., & Tversky, A. (1979). Prospect theory: An analysis of decision under risk. *Econometrica*, 47(2), 263--291.
-
-Lewandowsky, S., Ecker, U. K., Seifert, C. M., Schwarz, N., & Cook, J. (2012). Misinformation and its correction: Continued influence and successful debiasing. *Psychological Science in the Public Interest*, 13(3), 106--131.
-
-Pariser, E. (2011). *The Filter Bubble: What the Internet is Hiding from You*. Penguin.
-
-Pearl, J. (1988). *Probabilistic Reasoning in Intelligent Systems*. Morgan Kaufmann.
-
-Shannon, C. E. (1948). A mathematical theory of communication. *Bell System Technical Journal*, 27(3), 379--423.
-
-Tversky, A., & Kahneman, D. (1974). Judgment under uncertainty: Heuristics and biases. *Science*, 185(4157), 1124--1131.
-
-Walter, N., Cohen, J., Holbert, R. L., & Morag, Y. (2020). Fact-checking: A meta-analysis of what works and for whom. *Political Communication*, 37(3), 350--375.

@@ -1,0 +1,644 @@
+schema: 1
+coverage: reviewed
+reviewed_manuscript_sha256: 775907855e338f4332d6b321cebcb68248ffec8ca5630f3c974f751c804f03e2
+claims:
+- id: abs-reps
+  kind: computation
+  passage: A seeded toy model, in which a one-dimensional Kalman agent that cannot observe its channel
+    tracks a random-walk world over 400 repetitions, gives each operator a distinct signature.
+  evidence:
+    file: simulation/output/results.json
+    run_id: lensing
+    pointer: /config/reps
+    reported: '400'
+    units: repetitions
+    conditions: 1-D Kalman agent on a random walk, 400 seeded repetitions of 200 steps, seed 20260417
+    decimals: 0
+- id: abs-A-loss
+  kind: computation
+  passage: Attenuation loses information (0.37) at near-zero curvature.
+  evidence:
+    file: simulation/output/results.json
+    run_id: lensing
+    pointer: /scenarios/A_attenuation/information_loss
+    reported: '0.37'
+    units: fraction of mutual information lost
+    conditions: 1-D Kalman agent on a random walk, 400 seeded repetitions of 200 steps, seed 20260417;
+      scenario A
+    decimals: 2
+- id: abs-B-loss
+  kind: computation
+  passage: Selection with warping loses the most (0.88) with negative curvature ($-0.27$).
+  evidence:
+    file: simulation/output/results.json
+    run_id: lensing
+    pointer: /scenarios/B_selection_warping/information_loss
+    reported: '0.88'
+    units: fraction of mutual information lost
+    conditions: 1-D Kalman agent on a random walk, 400 seeded repetitions of 200 steps, seed 20260417;
+      scenario B
+    decimals: 2
+- id: abs-B-curv
+  kind: computation
+  passage: Selection with warping loses the most (0.88) with negative curvature ($-0.27$).
+  evidence:
+    file: simulation/output/results.json
+    run_id: lensing
+    pointer: /scenarios/B_selection_warping/inferential_curvature
+    reported: '-0.27'
+    units: slope difference
+    conditions: 1-D Kalman agent on a random walk, 400 seeded repetitions of 200 steps, seed 20260417;
+      scenario B
+    decimals: 2
+- id: abs-C-div
+  kind: computation
+  passage: Amplification produces the largest posterior divergence (0.36 bits) and strong positive curvature
+    ($+1.06$).
+  evidence:
+    file: simulation/output/results.json
+    run_id: lensing
+    pointer: /scenarios/C_amplification/posterior_divergence
+    reported: '0.36'
+    units: Jensen-Shannon bits
+    conditions: 1-D Kalman agent on a random walk, 400 seeded repetitions of 200 steps, seed 20260417;
+      scenario C
+    decimals: 2
+- id: abs-C-curv
+  kind: computation
+  passage: Amplification produces the largest posterior divergence (0.36 bits) and strong positive curvature
+    ($+1.06$).
+  evidence:
+    file: simulation/output/results.json
+    run_id: lensing
+    pointer: /scenarios/C_amplification/inferential_curvature
+    reported: '+1.06'
+    units: slope difference
+    conditions: 1-D Kalman agent on a random walk, 400 seeded repetitions of 200 steps, seed 20260417;
+      scenario C
+    decimals: 2
+- id: abs-D-loss
+  kind: computation
+  passage: Recursion loses least (0.16) and blunts updating ($-0.43$).
+  evidence:
+    file: simulation/output/results.json
+    run_id: lensing
+    pointer: /scenarios/D_recursion/information_loss
+    reported: '0.16'
+    units: fraction of mutual information lost
+    conditions: 1-D Kalman agent on a random walk, 400 seeded repetitions of 200 steps, seed 20260417;
+      scenario D
+    decimals: 2
+- id: abs-D-curv
+  kind: computation
+  passage: Recursion loses least (0.16) and blunts updating ($-0.43$).
+  evidence:
+    file: simulation/output/results.json
+    run_id: lensing
+    pointer: /scenarios/D_recursion/inferential_curvature
+    reported: '-0.43'
+    units: slope difference
+    conditions: 1-D Kalman agent on a random walk, 400 seeded repetitions of 200 steps, seed 20260417;
+      scenario D
+    decimals: 2
+- id: reps
+  kind: computation
+  passage: Each metric is averaged over 400 seeded repetitions of a 200-step run; a single command reproduces
+    the run and writes `simulation/output/results.json`.
+  evidence:
+    file: simulation/output/results.json
+    run_id: lensing
+    pointer: /config/reps
+    reported: '400'
+    units: repetitions
+    conditions: 1-D Kalman agent on a random walk, 400 seeded repetitions of 200 steps, seed 20260417
+    decimals: 0
+- id: steps
+  kind: computation
+  passage: Each metric is averaged over 400 seeded repetitions of a 200-step run; a single command reproduces
+    the run and writes `simulation/output/results.json`.
+  evidence:
+    file: simulation/output/results.json
+    run_id: lensing
+    pointer: /config/time_steps
+    reported: '200'
+    units: steps
+    conditions: 1-D Kalman agent on a random walk, 400 seeded repetitions of 200 steps, seed 20260417
+    decimals: 0
+- id: B-loss
+  kind: computation
+  passage: Loss is highest under selection with warping (B, $\mathcal{L} = 0.88$), where dropping half
+    the steps destroys the most mutual information.
+  evidence:
+    file: simulation/output/results.json
+    run_id: lensing
+    pointer: /scenarios/B_selection_warping/information_loss
+    reported: '0.88'
+    units: fraction of mutual information lost
+    conditions: 1-D Kalman agent on a random walk, 400 seeded repetitions of 200 steps, seed 20260417;
+      scenario B
+    decimals: 2
+- id: C-loss
+  kind: computation
+  passage: Amplification is also high (C, $\mathcal{L} = 0.68$), because scaling rare innovations decorrelates
+    $M_t$ from $W_t$.
+  evidence:
+    file: simulation/output/results.json
+    run_id: lensing
+    pointer: /scenarios/C_amplification/information_loss
+    reported: '0.68'
+    units: fraction of mutual information lost
+    conditions: 1-D Kalman agent on a random walk, 400 seeded repetitions of 200 steps, seed 20260417;
+      scenario C
+    decimals: 2
+- id: A-loss
+  kind: computation
+  passage: Attenuation is moderate (A, $\mathcal{L} = 0.37$).
+  evidence:
+    file: simulation/output/results.json
+    run_id: lensing
+    pointer: /scenarios/A_attenuation/information_loss
+    reported: '0.37'
+    units: fraction of mutual information lost
+    conditions: 1-D Kalman agent on a random walk, 400 seeded repetitions of 200 steps, seed 20260417;
+      scenario A
+    decimals: 2
+- id: D-loss
+  kind: computation
+  passage: 'Recursion is lowest (D, $\mathcal{L} = 0.16$): the channel preserves the signal and delays
+    it.'
+  evidence:
+    file: simulation/output/results.json
+    run_id: lensing
+    pointer: /scenarios/D_recursion/information_loss
+    reported: '0.16'
+    units: fraction of mutual information lost
+    conditions: 1-D Kalman agent on a random walk, 400 seeded repetitions of 200 steps, seed 20260417;
+      scenario D
+    decimals: 2
+- id: C-div
+  kind: computation
+  passage: Divergence is highest under amplification (C, $\mathcal{D} = 0.36$).
+  evidence:
+    file: simulation/output/results.json
+    run_id: lensing
+    pointer: /scenarios/C_amplification/posterior_divergence
+    reported: '0.36'
+    units: Jensen-Shannon bits
+    conditions: 1-D Kalman agent on a random walk, 400 seeded repetitions of 200 steps, seed 20260417;
+      scenario C
+    decimals: 2
+- id: A-div
+  kind: computation
+  passage: The other three cluster (A $= 0.22$, B $= 0.24$, D $= 0.24$), so the scalar alone understates
+    how differently the channels fail.
+  evidence:
+    file: simulation/output/results.json
+    run_id: lensing
+    pointer: /scenarios/A_attenuation/posterior_divergence
+    reported: '0.22'
+    units: Jensen-Shannon bits
+    conditions: 1-D Kalman agent on a random walk, 400 seeded repetitions of 200 steps, seed 20260417;
+      scenario A
+    decimals: 2
+- id: B-div
+  kind: computation
+  passage: The other three cluster (A $= 0.22$, B $= 0.24$, D $= 0.24$), so the scalar alone understates
+    how differently the channels fail.
+  evidence:
+    file: simulation/output/results.json
+    run_id: lensing
+    pointer: /scenarios/B_selection_warping/posterior_divergence
+    reported: '0.24'
+    units: Jensen-Shannon bits
+    conditions: 1-D Kalman agent on a random walk, 400 seeded repetitions of 200 steps, seed 20260417;
+      scenario B
+    decimals: 2
+- id: D-div
+  kind: computation
+  passage: The other three cluster (A $= 0.22$, B $= 0.24$, D $= 0.24$), so the scalar alone understates
+    how differently the channels fail.
+  evidence:
+    file: simulation/output/results.json
+    run_id: lensing
+    pointer: /scenarios/D_recursion/posterior_divergence
+    reported: '0.24'
+    units: Jensen-Shannon bits
+    conditions: 1-D Kalman agent on a random walk, 400 seeded repetitions of 200 steps, seed 20260417;
+      scenario D
+    decimals: 2
+- id: A-loc
+  kind: computation
+  passage: All four channels displace the posterior mean, by a mean absolute shift of 0.86 (A), 1.07 (B),
+    1.39 (C), and 0.92 (D) in units of the world state.
+  evidence:
+    file: simulation/output/results.json
+    run_id: lensing
+    pointer: /scenarios/A_attenuation/divergence_location_shift
+    reported: '0.86'
+    units: world-state units
+    conditions: 1-D Kalman agent on a random walk, 400 seeded repetitions of 200 steps, seed 20260417;
+      scenario A
+    decimals: 2
+- id: B-loc
+  kind: computation
+  passage: All four channels displace the posterior mean, by a mean absolute shift of 0.86 (A), 1.07 (B),
+    1.39 (C), and 0.92 (D) in units of the world state.
+  evidence:
+    file: simulation/output/results.json
+    run_id: lensing
+    pointer: /scenarios/B_selection_warping/divergence_location_shift
+    reported: '1.07'
+    units: world-state units
+    conditions: 1-D Kalman agent on a random walk, 400 seeded repetitions of 200 steps, seed 20260417;
+      scenario B
+    decimals: 2
+- id: C-loc
+  kind: computation
+  passage: All four channels displace the posterior mean, by a mean absolute shift of 0.86 (A), 1.07 (B),
+    1.39 (C), and 0.92 (D) in units of the world state.
+  evidence:
+    file: simulation/output/results.json
+    run_id: lensing
+    pointer: /scenarios/C_amplification/divergence_location_shift
+    reported: '1.39'
+    units: world-state units
+    conditions: 1-D Kalman agent on a random walk, 400 seeded repetitions of 200 steps, seed 20260417;
+      scenario C
+    decimals: 2
+- id: D-loc
+  kind: computation
+  passage: All four channels displace the posterior mean, by a mean absolute shift of 0.86 (A), 1.07 (B),
+    1.39 (C), and 0.92 (D) in units of the world state.
+  evidence:
+    file: simulation/output/results.json
+    run_id: lensing
+    pointer: /scenarios/D_recursion/divergence_location_shift
+    reported: '0.92'
+    units: world-state units
+    conditions: 1-D Kalman agent on a random walk, 400 seeded repetitions of 200 steps, seed 20260417;
+      scenario D
+    decimals: 2
+- id: B-disp
+  kind: computation
+  passage: Only selection with warping also widens the posterior (dispersion change $= 0.44$), because
+    dropped steps leave the agent less certain.
+  evidence:
+    file: simulation/output/results.json
+    run_id: lensing
+    pointer: /scenarios/B_selection_warping/divergence_dispersion_change
+    reported: '0.44'
+    units: world-state units
+    conditions: 1-D Kalman agent on a random walk, 400 seeded repetitions of 200 steps, seed 20260417;
+      scenario B
+    decimals: 2
+- id: A-disp
+  kind: computation
+  passage: 'The other three have a dispersion change of $0.00$, identically zero by construction: the
+    agent updates on every step with a fixed assumed noise, so its posterior variance follows the same
+    recursion as the benchmark''s.'
+  evidence:
+    file: simulation/output/results.json
+    run_id: lensing
+    pointer: /scenarios/A_attenuation/divergence_dispersion_change
+    reported: '0.00'
+    units: world-state units
+    conditions: 1-D Kalman agent on a random walk, 400 seeded repetitions of 200 steps, seed 20260417;
+      scenario A
+    decimals: 2
+- id: C-disp
+  kind: computation
+  passage: 'The other three have a dispersion change of $0.00$, identically zero by construction: the
+    agent updates on every step with a fixed assumed noise, so its posterior variance follows the same
+    recursion as the benchmark''s.'
+  evidence:
+    file: simulation/output/results.json
+    run_id: lensing
+    pointer: /scenarios/C_amplification/divergence_dispersion_change
+    reported: '0.00'
+    units: world-state units
+    conditions: 1-D Kalman agent on a random walk, 400 seeded repetitions of 200 steps, seed 20260417;
+      scenario C
+    decimals: 2
+- id: D-disp
+  kind: computation
+  passage: 'The other three have a dispersion change of $0.00$, identically zero by construction: the
+    agent updates on every step with a fixed assumed noise, so its posterior variance follows the same
+    recursion as the benchmark''s.'
+  evidence:
+    file: simulation/output/results.json
+    run_id: lensing
+    pointer: /scenarios/D_recursion/divergence_dispersion_change
+    reported: '0.00'
+    units: world-state units
+    conditions: 1-D Kalman agent on a random walk, 400 seeded repetitions of 200 steps, seed 20260417;
+      scenario D
+    decimals: 2
+- id: A-curv
+  kind: computation
+  passage: 'Curvature is near zero under attenuation (A, $\kappa = -0.00$): the agent responds with the
+    benchmark sensitivity and more noise.'
+  evidence:
+    file: simulation/output/results.json
+    run_id: lensing
+    pointer: /scenarios/A_attenuation/inferential_curvature
+    reported: '-0.00'
+    units: slope difference
+    conditions: 1-D Kalman agent on a random walk, 400 seeded repetitions of 200 steps, seed 20260417;
+      scenario A
+    decimals: 2
+- id: C-curv
+  kind: computation
+  passage: It is strongly positive under amplification (C, $\kappa = +1.06$), a magnification in which
+    the agent updates far more than the evidence warrants.
+  evidence:
+    file: simulation/output/results.json
+    run_id: lensing
+    pointer: /scenarios/C_amplification/inferential_curvature
+    reported: '+1.06'
+    units: slope difference
+    conditions: 1-D Kalman agent on a random walk, 400 seeded repetitions of 200 steps, seed 20260417;
+      scenario C
+    decimals: 2
+- id: B-curv
+  kind: computation
+  passage: It is negative under selection with warping (B, $\kappa = -0.27$) and recursion (D, $\kappa
+    = -0.43$), an occlusion in which dropped steps and stale channel memory blunt the response to new
+    evidence.
+  evidence:
+    file: simulation/output/results.json
+    run_id: lensing
+    pointer: /scenarios/B_selection_warping/inferential_curvature
+    reported: '-0.27'
+    units: slope difference
+    conditions: 1-D Kalman agent on a random walk, 400 seeded repetitions of 200 steps, seed 20260417;
+      scenario B
+    decimals: 2
+- id: D-curv
+  kind: computation
+  passage: It is negative under selection with warping (B, $\kappa = -0.27$) and recursion (D, $\kappa
+    = -0.43$), an occlusion in which dropped steps and stale channel memory blunt the response to new
+    evidence.
+  evidence:
+    file: simulation/output/results.json
+    run_id: lensing
+    pointer: /scenarios/D_recursion/inferential_curvature
+    reported: '-0.43'
+    units: slope difference
+    conditions: 1-D Kalman agent on a random walk, 400 seeded repetitions of 200 steps, seed 20260417;
+      scenario D
+    decimals: 2
+- id: t-reverse
+  kind: computation
+  passage: At $t = 150$ the world reverses direction.
+  evidence:
+    file: simulation/output/results.json
+    run_id: lensing
+    pointer: /config/t_correct
+    reported: '150'
+    units: time step
+    conditions: 1-D Kalman agent on a random walk, 400 seeded repetitions of 200 steps, seed 20260417
+    decimals: 0
+- id: h-window
+  kind: computation
+  passage: The corrective evidence then arrives through each channel, with no external oracle, and hysteresis
+    is the mean Jensen-Shannon divergence over the following 10 steps.
+  evidence:
+    file: simulation/output/results.json
+    run_id: lensing
+    pointer: /config/h_window
+    reported: '10'
+    units: steps
+    conditions: 1-D Kalman agent on a random walk, 400 seeded repetitions of 200 steps, seed 20260417
+    decimals: 0
+- id: C-hyst
+  kind: computation
+  passage: Amplification leaves the largest residue (C, $\mathcal{H} = 0.35$), because the reversal is
+    itself a large innovation that the channel over-amplifies.
+  evidence:
+    file: simulation/output/results.json
+    run_id: lensing
+    pointer: /scenarios/C_amplification/hysteresis
+    reported: '0.35'
+    units: Jensen-Shannon bits over 10 steps after reversal at t = 150
+    conditions: 1-D Kalman agent on a random walk, 400 seeded repetitions of 200 steps, seed 20260417;
+      scenario C
+    decimals: 2
+- id: B-hyst
+  kind: computation
+  passage: Selection with warping (B, $\mathcal{H} = 0.25$) and recursion (D, $\mathcal{H} = 0.24$) follow,
+    and attenuation is lowest (A, $\mathcal{H} = 0.22$).
+  evidence:
+    file: simulation/output/results.json
+    run_id: lensing
+    pointer: /scenarios/B_selection_warping/hysteresis
+    reported: '0.25'
+    units: Jensen-Shannon bits over 10 steps after reversal at t = 150
+    conditions: 1-D Kalman agent on a random walk, 400 seeded repetitions of 200 steps, seed 20260417;
+      scenario B
+    decimals: 2
+- id: D-hyst
+  kind: computation
+  passage: Selection with warping (B, $\mathcal{H} = 0.25$) and recursion (D, $\mathcal{H} = 0.24$) follow,
+    and attenuation is lowest (A, $\mathcal{H} = 0.22$).
+  evidence:
+    file: simulation/output/results.json
+    run_id: lensing
+    pointer: /scenarios/D_recursion/hysteresis
+    reported: '0.24'
+    units: Jensen-Shannon bits over 10 steps after reversal at t = 150
+    conditions: 1-D Kalman agent on a random walk, 400 seeded repetitions of 200 steps, seed 20260417;
+      scenario D
+    decimals: 2
+- id: A-hyst
+  kind: computation
+  passage: Selection with warping (B, $\mathcal{H} = 0.25$) and recursion (D, $\mathcal{H} = 0.24$) follow,
+    and attenuation is lowest (A, $\mathcal{H} = 0.22$).
+  evidence:
+    file: simulation/output/results.json
+    run_id: lensing
+    pointer: /scenarios/A_attenuation/hysteresis
+    reported: '0.22'
+    units: Jensen-Shannon bits over 10 steps after reversal at t = 150
+    conditions: 1-D Kalman agent on a random walk, 400 seeded repetitions of 200 steps, seed 20260417;
+      scenario A
+    decimals: 2
+- id: sig-A
+  kind: computation
+  passage: 'Attenuation is ignorance: moderate information loss (0.37), curvature near zero, and divergence
+    carried by unbiased location error; the agent is wrong only through noise.'
+  evidence:
+    file: simulation/output/results.json
+    run_id: lensing
+    pointer: /scenarios/A_attenuation/information_loss
+    reported: '0.37'
+    units: fraction of mutual information lost
+    conditions: 1-D Kalman agent on a random walk, 400 seeded repetitions of 200 steps, seed 20260417;
+      scenario A
+    decimals: 2
+- id: sig-C-div
+  kind: computation
+  passage: Amplification combines the highest divergence (0.36) with strong positive curvature ($+1.06$);
+    selection with warping combines the highest information loss (0.88) with negative curvature ($-0.27$).
+  evidence:
+    file: simulation/output/results.json
+    run_id: lensing
+    pointer: /scenarios/C_amplification/posterior_divergence
+    reported: '0.36'
+    units: Jensen-Shannon bits
+    conditions: 1-D Kalman agent on a random walk, 400 seeded repetitions of 200 steps, seed 20260417;
+      scenario C
+    decimals: 2
+- id: sig-C-curv
+  kind: computation
+  passage: Amplification combines the highest divergence (0.36) with strong positive curvature ($+1.06$);
+    selection with warping combines the highest information loss (0.88) with negative curvature ($-0.27$).
+  evidence:
+    file: simulation/output/results.json
+    run_id: lensing
+    pointer: /scenarios/C_amplification/inferential_curvature
+    reported: '+1.06'
+    units: slope difference
+    conditions: 1-D Kalman agent on a random walk, 400 seeded repetitions of 200 steps, seed 20260417;
+      scenario C
+    decimals: 2
+- id: sig-B-loss
+  kind: computation
+  passage: Amplification combines the highest divergence (0.36) with strong positive curvature ($+1.06$);
+    selection with warping combines the highest information loss (0.88) with negative curvature ($-0.27$).
+  evidence:
+    file: simulation/output/results.json
+    run_id: lensing
+    pointer: /scenarios/B_selection_warping/information_loss
+    reported: '0.88'
+    units: fraction of mutual information lost
+    conditions: 1-D Kalman agent on a random walk, 400 seeded repetitions of 200 steps, seed 20260417;
+      scenario B
+    decimals: 2
+- id: sig-B-curv
+  kind: computation
+  passage: Amplification combines the highest divergence (0.36) with strong positive curvature ($+1.06$);
+    selection with warping combines the highest information loss (0.88) with negative curvature ($-0.27$).
+  evidence:
+    file: simulation/output/results.json
+    run_id: lensing
+    pointer: /scenarios/B_selection_warping/inferential_curvature
+    reported: '-0.27'
+    units: slope difference
+    conditions: 1-D Kalman agent on a random walk, 400 seeded repetitions of 200 steps, seed 20260417;
+      scenario B
+    decimals: 2
+- id: friston-blanket
+  kind: source
+  passage: The architecture corresponds to the Markov-blanket formalism [@pearl1988; @friston2013].
+  evidence:
+    citation_id: friston2013
+    locator: Abstract
+    verified: true
+    verification_note: 'DOI 10.1098/rsif.2013.0475; the abstract: a Markov blanket separates internal
+      and external states in a statistical sense.'
+- id: friston2017
+  kind: source
+  passage: 'In active inference, an agent is separated from its environment by a Markov blanket: sensory
+    and active states that mediate all interaction between internal and external states [@friston2017].'
+  evidence:
+    citation_id: friston2017
+    locator: Abstract
+    verified: true
+    verification_note: DOI 10.1162/neco_a_00912; the abstract presents active inference as a process theory;
+      the Markov-blanket separation itself is stated in Friston 2013 (abstract checked).
+- id: tversky
+  kind: source
+  passage: '*Examples*: sensationalist coverage of rare events, trending algorithms that promote high-engagement
+    content regardless of base rate, exploitation of the availability heuristic [@tversky1974].'
+  evidence:
+    citation_id: tversky1974
+    locator: Abstract
+    verified: true
+    verification_note: DOI 10.1126/science.185.4157.1124; the abstract names the availability heuristic
+      among three heuristics that lead to systematic errors.
+- id: lewandowsky
+  kind: source
+  passage: The empirical counterpart is the continued influence of misinformation after retraction [@lewandowsky2012]
+    and the limited and variable effect of fact-checking [@walter2020].
+  evidence:
+    citation_id: lewandowsky2012
+    locator: Abstract
+    verified: true
+    verification_note: 'DOI 10.1177/1529100612451018; the abstract explains why retractions are ineffective
+      in memory updating. Walter et al. (10.1080/10584609.2019.1668894) abstract: a meta-analysis (k =
+      30) finds a modest positive effect (d = 0.29) that weakens under several conditions, i.e. limited
+      and variable.'
+- id: def-lensing
+  kind: definition
+  passage: Epistemic lensing occurs when the mapping $W_t \to M_t \to q_i$ systematically deforms belief
+    relative to the benchmark mapping $W_t \to X_t \to q^*$.
+  rationale: Formal definition relative to a benchmark channel.
+- id: def-loss
+  kind: definition
+  passage: 'Information loss measures how much world-relevant information survives mediation:'
+  rationale: Metric definition.
+- id: def-curvature
+  kind: definition
+  passage: 'Inferential curvature is the difference in update sensitivity between mediated and benchmark
+    channels:'
+  rationale: Metric definition.
+- id: def-hysteresis
+  kind: definition
+  passage: 'Hysteresis is the residual divergence after correction:'
+  rationale: Metric definition.
+- id: def-shear
+  kind: definition
+  passage: When subpopulations are exposed to differently structured channels, their posteriors diverge
+    systematically.
+  rationale: Population-level definition of posterior shear follows.
+- id: asm-blind
+  kind: assumption
+  passage: In keeping with Section 2.2, the agent does not observe the channel $\mathcal{C}$.
+  rationale: The agent's fixed assumed noise is what makes dispersion change identically zero in three
+    scenarios.
+- id: asm-attenuation
+  kind: assumption
+  passage: 'Attenuation is modeled as reduced signal-to-noise: a parameter $\alpha \in (0,1]$ adds $(1/\alpha
+    - 1)\,\sigma_X^2$ of variance, so the channel still tracks $X_t$ without directional bias and transmits
+    less information.'
+  rationale: Modelling choice that keeps attenuation free of directional bias.
+- id: asm-benchmark
+  kind: assumption
+  passage: The benchmark $q^*$ is the posterior a well-calibrated agent would form from a *higher-fidelity*
+    channel.
+  rationale: Relative-fidelity benchmark; acknowledged as approximate in Section 8.
+- id: int-zero
+  kind: interpretation
+  passage: 'The other three have a dispersion change of $0.00$, identically zero by construction: the
+    agent updates on every step with a fixed assumed noise, so its posterior variance follows the same
+    recursion as the benchmark''s.'
+  rationale: Fixed assumed noise makes the posterior-variance recursion identical to the benchmark's.
+- id: int-confident
+  kind: interpretation
+  passage: 'The decomposition carries the strongest evidence: three of the four channels displace the
+    posterior without widening it, so the agent is confident and wrong at once.'
+  rationale: Reading of the dispersion decomposition (A, C, D at 0.00).
+- id: int-hyst
+  kind: interpretation
+  passage: In this single-agent model the post-reversal residual tracks each channel's steady-state distortion
+    and does not isolate a memory-specific residue.
+  rationale: Hysteresis values (0.22-0.35) track posterior divergence (0.22-0.36) scenario by scenario.
+- id: int-curv-clean
+  kind: interpretation
+  passage: Of the four metrics, curvature separates the operators most cleanly, including where posterior
+    divergence does not.
+  rationale: Curvature values span -0.43 to +1.06 with distinct signs, while divergence clusters at 0.22-0.24
+    for three channels.
+- id: int-main
+  kind: interpretation
+  passage: The framework's main result is the distinction between *ignorance* and *distortion*.
+  rationale: Conclusion drawn from the operator signatures.
+- id: norm-remedy
+  kind: normative
+  passage: A society suffering from distortion needs *differently structured* channels and the institutional
+    capacity to recognize when its channels deform inference.
+  rationale: Policy conclusion.
+runs:
+- id: lensing
+  required: true
+  record: verification/lensing.json

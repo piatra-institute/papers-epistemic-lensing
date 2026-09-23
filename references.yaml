@@ -1,0 +1,156 @@
+# CSL references with stable IDs; cite with Pandoc [@id] syntax.
+# Migrated from the legacy inline bibliography. Entries with a DOI were resolved through doi.org
+# content negotiation (CSL-JSON) and checked for year and title; others were matched in Crossref
+# or entered by hand. Provenance per entry is in sources.md.
+references:
+- id: benkler2018
+  type: book
+  title: 'Network Propaganda: Manipulation, Disinformation, and Radicalization in American Politics'
+  author:
+  - given: Yochai
+    family: Benkler
+  - given: Robert
+    family: Faris
+  - given: Hal
+    family: Roberts
+  publisher: Oxford University Press
+  DOI: 10.1093/oso/9780190923624.001.0001
+  URL: http://dx.doi.org/10.1093/oso/9780190923624.001.0001
+  issued:
+    date-parts:
+    - - 2018
+  publisher-place: New York
+- id: friston2013
+  type: article-journal
+  title: Life as we know it
+  author:
+  - given: Karl
+    family: Friston
+  container-title: Journal of The Royal Society Interface
+  volume: '10'
+  issue: '86'
+  page: '20130475'
+  DOI: 10.1098/rsif.2013.0475
+  issued:
+    date-parts:
+    - - 2013
+- id: friston2017
+  type: article-journal
+  title: 'Active Inference: A Process Theory'
+  author:
+  - given: Karl
+    family: Friston
+  - given: Thomas
+    family: FitzGerald
+  - given: Francesco
+    family: Rigoli
+  - given: Philipp
+    family: Schwartenbeck
+  - given: Giovanni
+    family: Pezzulo
+  container-title: Neural Computation
+  volume: '29'
+  issue: '1'
+  page: 1-49
+  DOI: 10.1162/neco_a_00912
+  issued:
+    date-parts:
+    - - 2017
+- id: lewandowsky2012
+  type: article-journal
+  title: 'Misinformation and Its Correction: Continued Influence and Successful Debiasing'
+  author:
+  - given: Stephan
+    family: Lewandowsky
+  - given: Ullrich K. H.
+    family: Ecker
+  - given: Colleen M.
+    family: Seifert
+  - given: Norbert
+    family: Schwarz
+  - given: John
+    family: Cook
+  container-title: Psychological Science in the Public Interest
+  volume: '13'
+  issue: '3'
+  page: 106-131
+  DOI: 10.1177/1529100612451018
+  URL: http://dx.doi.org/10.1177/1529100612451018
+  issued:
+    date-parts:
+    - - 2012
+- id: pariser2011
+  type: book
+  title: 'The Filter Bubble: What the Internet Is Hiding from You'
+  author:
+  - given: Eli
+    family: Pariser
+  publisher: Penguin Press
+  publisher-place: New York
+  issued:
+    date-parts:
+    - - 2011
+- id: pearl1988
+  type: book
+  title: 'Probabilistic Reasoning in Intelligent Systems: Networks of Plausible Inference'
+  publisher: Morgan Kaufmann
+  DOI: 10.1016/c2009-0-27609-4
+  URL: http://dx.doi.org/10.1016/C2009-0-27609-4
+  issued:
+    date-parts:
+    - - 1988
+  author:
+  - given: Judea
+    family: Pearl
+  publisher-place: San Mateo, CA
+- id: shannon1948
+  type: article-journal
+  title: A Mathematical Theory of Communication
+  author:
+  - given: C. E.
+    family: Shannon
+  container-title: Bell System Technical Journal
+  volume: '27'
+  issue: '3'
+  page: 379-423
+  DOI: 10.1002/j.1538-7305.1948.tb01338.x
+  issued:
+    date-parts:
+    - - 1948
+- id: tversky1974
+  type: article-journal
+  title: 'Judgment under Uncertainty: Heuristics and Biases'
+  author:
+  - given: Amos
+    family: Tversky
+  - given: Daniel
+    family: Kahneman
+  container-title: Science
+  volume: '185'
+  issue: '4157'
+  page: 1124-1131
+  DOI: 10.1126/science.185.4157.1124
+  issued:
+    date-parts:
+    - - 1974
+- id: walter2020
+  type: article-journal
+  title: 'Fact-Checking: A Meta-Analysis of What Works and for Whom'
+  author:
+  - given: Nathan
+    family: Walter
+  - given: Jonathan
+    family: Cohen
+  - given: R. Lance
+    family: Holbert
+  - given: Yasmin
+    family: Morag
+  container-title: Political Communication
+  volume: '37'
+  issue: '3'
+  page: 350-375
+  DOI: 10.1080/10584609.2019.1668894
+  URL: http://dx.doi.org/10.1080/10584609.2019.1668894
+  issued:
+    date-parts:
+    - - 2020

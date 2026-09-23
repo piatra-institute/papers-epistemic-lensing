@@ -2,6 +2,16 @@
 
 Dated log of editorial passes and verification runs. Newest first.
 
+## 2026-09-23 — structured-evidence migration
+
+Structured-evidence migration (references and claims).
+- references.yaml: 9 CSL entries. 8 resolved through doi.org content negotiation (Crossref) and checked for year, title and authors; pariser2011 entered by hand after the automatic Crossref match returned a book review. In-text citations converted to Pandoc [@id]; the legacy list replaced by the citeproc-rendered list (Chicago author-date).
+- Removed: Kahneman and Tversky (1979), "Prospect theory", listed in the references but cited nowhere in the text and supporting no statement in it. sources.md also lists Bernstein et al. (2018) and Sunstein (2001), which the paper does not cite; they are not in references.yaml.
+- claims.yaml: 59 claims (41 computation, 4 source, 5 definition, 3 assumption, 5 interpretation, 1 normative). Every Section 5 metric and the abstract's numbers bound to the full-precision fields under /scenarios in results.json (signed curvatures bound with their signs). Source claims checked against Crossref/OpenAlex abstracts (Friston 2013 Markov blanket; Friston et al. 2017; Tversky and Kahneman on availability; Lewandowsky et al. on continued influence; Walter et al. meta-analysis, k = 30, d = 0.29, attenuated effects).
+- Unverified, not bound: Benkler, Faris and Roberts on asymmetric misinformation ecosystems, Pariser on personalisation, Pearl and Shannon (book or classic sources not checked beyond identity).
+- Run: lensing (uv run python run_all.py); results.json reproduced byte for byte. The first receipt was NEEDS_REVIEW because uv created simulation/uv.lock during the run (a hashed input); the run was repeated with the lock present and passed, and the lock is committed.
+- metadata claims_target: claim-ledger.
+
 ## 2026-09-23 — prose revision
 
 Prose rewritten against the house standards. Headings: Abstract; 1 Introduction; 2 Theoretical Framework; 3 Distortion Operators; 4 Distortion Metrics (was "Metrics of the Bend"); 5 Toy Simulation (5.4 Ignorance and Distortion in the Simulation, was "Key Finding"); 6 Population Extension; 7 Empirical Program; 8 Limitations (was "What a comparative benchmark can and cannot fix"); 9 Conclusion (was "Ignorance and distortion are different problems"); Reproducibility (new).
